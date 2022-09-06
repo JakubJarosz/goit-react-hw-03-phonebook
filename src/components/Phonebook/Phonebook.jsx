@@ -6,7 +6,7 @@ import SearchFilter from "../SearchFilter/SearchFilter";
 
 class Phonebook extends React.Component {
     state = {
-        contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts || [],
+        contacts:  [],
         filter: '',
         name: '',
         number: '',
