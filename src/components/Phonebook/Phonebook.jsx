@@ -6,7 +6,7 @@ import SearchFilter from "../SearchFilter/SearchFilter";
 
 class Phonebook extends React.Component {
     state = {
-        contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts ,
+        contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts || [],
         filter: '',
         name: '',
         number: '',
@@ -67,6 +67,7 @@ class Phonebook extends React.Component {
         window.localStorage.setItem("userInfo", JSON.stringify(this.state))
         const stateFromLocalStorage = JSON.parse(window.localStorage.getItem('userInfo'));
         // console.log(stateFromLocalStorage)
+       if (localStorage.getItem("userInfo") )
         this.setState({ ...this.state, contacts: stateFromLocalStorage.contacts });
         // console.log(localStorage)
         console.log(this.state)
