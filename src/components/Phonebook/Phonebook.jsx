@@ -5,14 +5,15 @@ import SearchFilter from "../SearchFilter/SearchFilter";
 
 
 class Phonebook extends React.Component {
-    state = {
-        contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts || [],
-        filter: '',
-        name: '',
-        number: '',
-    };
-  
 
+
+    constructor() {
+        super();
+        this.state = JSON.parse(window.localStorage.getItem('userInfo')) || {
+            contacts: [],
+        }
+    }
+   
 
     handleFormSubmit = evt => {
         evt.preventDefault();
@@ -98,3 +99,6 @@ class Phonebook extends React.Component {
 
 
 export default Phonebook
+
+
+
