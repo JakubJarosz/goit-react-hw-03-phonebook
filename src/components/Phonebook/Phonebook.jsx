@@ -6,11 +6,19 @@ import SearchFilter from "../SearchFilter/SearchFilter";
 
 class Phonebook extends React.Component {
     state = {
-        contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts || [],
+        contacts: this.nullCheck(),
         filter: '',
         name: '',
         number: '',
     };
+  
+    nullCheck = () => {
+        if (this.state.contacts === null) {
+           this.setState({contacts: ''})
+        } else {
+            this.setState({ contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts })
+       }
+   }
 
     handleFormSubmit = evt => {
         evt.preventDefault();
