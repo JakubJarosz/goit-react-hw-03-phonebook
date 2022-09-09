@@ -6,19 +6,13 @@ import SearchFilter from "../SearchFilter/SearchFilter";
 
 class Phonebook extends React.Component {
     state = {
-        contacts: this.nullCheck(),
+        contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts ,
         filter: '',
         name: '',
         number: '',
     };
   
-    nullCheck = () => {
-        if (this.state.contacts === null) {
-           this.setState({contacts: ''})
-        } else {
-            this.setState({ contacts: JSON.parse(window.localStorage.getItem('userInfo')).contacts })
-       }
-   }
+
 
     handleFormSubmit = evt => {
         evt.preventDefault();
@@ -69,7 +63,7 @@ class Phonebook extends React.Component {
     // The component lifecycle
 
 
-    componentDidMount() {
+   async componentDidMount() {
         window.localStorage.setItem("userInfo", JSON.stringify(this.state))
         const stateFromLocalStorage = JSON.parse(window.localStorage.getItem('userInfo'));
         // console.log(stateFromLocalStorage)
